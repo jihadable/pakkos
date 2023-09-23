@@ -5,3 +5,11 @@
 body{
     color: #222;
 }
+
+.img-show-1{
+    transform: translateX(-100%);
+}
+
+.img-show-2{
+    transform: translateX(-200%);
+}

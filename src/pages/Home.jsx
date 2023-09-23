@@ -7,7 +7,7 @@ export default function Home(){
     return (
         <>
         <Navbar />
-        <KosContent />
+        <KosContent page={"home"} />
         <Penjelasan />
         <Footer />
         </>

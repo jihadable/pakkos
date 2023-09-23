@@ -1,3 +1,4 @@
+import { IconStar } from "@tabler/icons-react"
 import img1 from "../assets/img1.png"
 import img2 from "../assets/img2.png"
 import img3 from "../assets/img3.png"
@@ -11,9 +12,9 @@ export default function Kos({ nama, rating, jarak, tanggal, bulan, harga }){
     const [isLove, setIsLove] = useState(false)
 
     return (
-        <div className="kos flex flex-col gap-2 text-[#222] cursor-pointer">
+        <div className={`kos flex flex-col gap-2 text-[#222] cursor-pointer group`}>
             <div className="top flex relative rounded-lg overflow-hidden">
-                <div className={`imgs flex transition duration-200 ${imgShow > 0 ? `-translate-x-[${imgShow}00%]` : ""}`}>
+                <div className={`imgs flex w-fit transition duration-200 ${imgShow > 0 ? `img-show-${imgShow}` : ""}`}>
                     <img src={img1} alt="Image" />
                     <img src={img2} alt="Image" />
                     <img src={img3} alt="Image" />
@@ -21,12 +22,12 @@ export default function Kos({ nama, rating, jarak, tanggal, bulan, harga }){
                 <div className="love text-white absolute top-4 right-4" onClick={() => setIsLove(!isLove)}>
                     <IconHeart stroke={1.5} width={28} height={28} fill={`${isLove ? "#fff" : "transparent"}`} />
                 </div>
-                <div className="btns absolute px-3 top-1/2 -translate-y-1/2 left-0 right-0 flex items-center justify-between">
-                    <div className="left p-1 bg-white/[.8] backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white" onClick={() => {imgShow > 0 ? setImgSHow(imgShow - 1) : ""}}>
-                        <IconChevronLeft stroke={1.5} />
+                <div className={`btns absolute px-3 top-1/2 -translate-y-1/2 left-0 right-0 flex items-center ${imgShow > 0 ? "justify-between" : "justify-end"} invisible group-hover:visible`}>
+                    <div className={`left p-1 bg-white/[.8] backdrop-blur-sm rounded-full ${imgShow > 0 ? "flex" : "hidden"} items-center justify-center hover:bg-white`} onClick={() => {imgShow > 0 ? setImgSHow(imgShow - 1) : ""}}>
+                        <IconChevronLeft stroke={1.5} width={20} height={20} />
                     </div>
                     <div className="right p-1 bg-white/[.8] backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white" onClick={() => {imgShow < 2 ? setImgSHow(imgShow + 1) : ""}}>
-                        <IconChevronRight stroke={1.5} />
+                        <IconChevronRight stroke={1.5} width={20} height={20} />
                     </div>
                 </div>
             </div>
@@ -34,7 +35,7 @@ export default function Kos({ nama, rating, jarak, tanggal, bulan, harga }){
                 <div className="top flex items-center justify-between">
                     <div className="nama font-semibold text-ellipsis overflow-hidden whitespace-nowrap max-w-[85%]">{nama}</div>
                     <div className="rating flex items-center">
-                        {/* <img src={star} alt="Star" /> */}
+                        <IconStar stroke={1.5} width={12} height={12} className="text-primary fill-primary" />
                         <span>{rating}</span>    
                     </div>
                 </div>
