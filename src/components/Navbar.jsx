@@ -1,8 +1,8 @@
 import logo from "../assets/logo.png"
 import account_menu from "../assets/account_menu.png"
 import account_image from "../assets/account_image.png"
-import search_icon from "../assets/search_icon.png"
 import { useState, useEffect, useRef } from "react"
+import { IconSearch } from "@tabler/icons-react"
 
 export default function Navbar({ page }){
 
@@ -19,22 +19,16 @@ export default function Navbar({ page }){
 
     return (
         <nav className={`fixed left-0 right-0 top-0 py-4 ${page === "title" ? "px-[10vw]" : "px-[5vw]"} bg-white flex items-center justify-between text-[#222] shadow z-10`}>
-            <a href="/" className="logo flex">
+            <a href="/" className="logo flex mobile:hidden">
                 <img src={logo} alt="Logo" />
             </a>
-            <div className="links flex items-center gap-4 py-3 pl-6 pr-2 rounded-full bg-white border shadow-md text-sm cursor-pointer">
-                <div>Ke mana saja</div>
-                <div className="line w-[1px] self-stretch bg-[#ccc]"></div>
-                <div>Minggu mana pun</div>
-                <div className="line w-[1px] self-stretch bg-[#ccc]"></div>
-                <div className="flex items-center gap-4 text-[#717171]">
-                    <div>Tambahkan tamu</div>
-                    <div className="p-2 rounded-full flex justify-center items-center bg-primary">
-                        <img src={search_icon} alt="Search icon" />
-                    </div>
+            <label className="search w-[40%] flex items-center rounded-full p-2 pl-8 border shadow-md mobile:w-full">
+                <input type="text" placeholder="Masukkan nama kost atau lokasi" className="w-full outline-none text-sm font-semibold placeholder:text-black" />
+                <div className="search-icon flex p-2 bg-primary rounded-full text-white">
+                    <IconSearch stroke={3} width={16} height={16} />
                 </div>
-            </div>
-            <div className="extra flex items-center gap-4">
+            </label>
+            <div className="extra flex items-center gap-4 mobile:hidden">
                 <div className="cursor-pointer">Pusat Bantuan</div>
                 <div className="account relative flex">
                     <div className="header flex gap-2 rounded-full p-2 border cursor-pointer" onClick={() => setShowAccountMenu(!showAccountMenu)} ref={showAccountMenuBtn}>

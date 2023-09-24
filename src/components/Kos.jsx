@@ -6,6 +6,8 @@ import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react"
 import { IconHeart } from "@tabler/icons-react"
 import { useState } from "react"
 import { Link } from "react-router-dom"
+import goTop from "../components/goTop"
+import { useEffect } from "react"
 
 export default function Kos({ nama, rating, jarak, tanggal, bulan, harga }){
     
@@ -13,21 +15,21 @@ export default function Kos({ nama, rating, jarak, tanggal, bulan, harga }){
     const [isLove, setIsLove] = useState(false)
 
     return (
-        <Link to={"/room/title"} className={`kos flex flex-col gap-2 text-[#222] cursor-pointer group`}>
-            <div className="top flex relative rounded-lg overflow-hidden">
-                <div className={`imgs flex w-fit transition duration-200 ${imgShow > 0 ? `img-show-${imgShow}` : ""}`}>
-                    <img src={img1} alt="Image" />
-                    <img src={img2} alt="Image" />
-                    <img src={img3} alt="Image" />
+        <Link to={"/room/title"} onClick={goTop} className={`kos flex flex-col gap-2 text-[#222] cursor-pointer group`}>
+            <div className="top flex relative rounded-lg overflow-hidden mobile:h-[calc(100vw-2rem)]">
+                <div className={`imgs flex transition duration-200 ${imgShow > 0 ? `img-show-${imgShow}` : ""}`}>
+                    <img src={img1} alt="Image" className="h-full w-fit" />
+                    <img src={img2} alt="Image" className="h-full w-fit" />
+                    <img src={img3} alt="Image" className="h-full w-fit" />
                 </div>
                 <div className="love text-white absolute top-4 right-4" onClick={() => setIsLove(!isLove)}>
                     <IconHeart stroke={1.5} width={28} height={28} fill={`${isLove ? "#fff" : "transparent"}`} />
                 </div>
-                <div className={`btns absolute px-3 top-1/2 -translate-y-1/2 left-0 right-0 flex items-center ${imgShow > 0 ? "justify-between" : "justify-end"} invisible group-hover:visible`}>
-                    <div className={`left p-1 bg-white/[.8] backdrop-blur-sm rounded-full ${imgShow > 0 ? "flex" : "hidden"} items-center justify-center hover:bg-white`} onClick={() => {imgShow > 0 ? setImgSHow(imgShow - 1) : ""}}>
+                <div className={`btns absolute px-3 top-1/2 -translate-y-1/2 left-0 right-0 flex items-center ${imgShow > 0 ? "justify-between" : "justify-end"} invisible group-hover:visible`} onClick={(e) => e.preventDefault()}>
+                    <div className={`btn left p-1 bg-white/[.8] backdrop-blur-sm rounded-full ${imgShow > 0 ? "flex" : "hidden"} items-center justify-center hover:bg-white`} onClick={() => {imgShow > 0 ? setImgSHow(imgShow - 1) : ""}}>
                         <IconChevronLeft stroke={1.5} width={20} height={20} />
                     </div>
-                    <div className="right p-1 bg-white/[.8] backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white" onClick={() => {imgShow < 2 ? setImgSHow(imgShow + 1) : ""}}>
+                    <div className="btn right p-1 bg-white/[.8] backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white" onClick={() => {imgShow < 2 ? setImgSHow(imgShow + 1) : ""}}>
                         <IconChevronRight stroke={1.5} width={20} height={20} />
                     </div>
                 </div>

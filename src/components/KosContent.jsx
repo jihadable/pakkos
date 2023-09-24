@@ -8,7 +8,7 @@ export default function KosContent({ page, totalKos }){
     }
 
     return (
-        <div className={`kos-content w-[90vw] ${page === "home" ? "mt-32" : ""} mb-12 mx-auto grid grid-cols-4 gap-4 gap-y-8`}>
+        <div className={`kos-content w-[90vw] ${page === "home" ? "mt-32" : ""} mb-12 mx-auto grid grid-cols-4 gap-4 gap-y-8 mobile:flex mobile:flex-col`}>
         {
             arrayKos.map((item, index) => {
                 return (
