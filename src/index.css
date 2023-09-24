@@ -13,3 +13,33 @@ body{
 .img-show-2{
     transform: translateX(-200%);
 }
+
+.title-img1{
+    background-image: url("./assets/titleImg1.png");
+    background-size: cover;
+    background-position: center;
+}
+
+.title-img2{
+    background-image: url("./assets/titleImg2.png");
+    background-size: cover;
+    background-position: center;
+}
+
+.title-img3{
+    background-image: url("./assets/titleImg3.png");
+    background-size: cover;
+    background-position: center;
+}
+
+.title-img4{
+    background-image: url("./assets/titleImg4.png");
+    background-size: cover;
+    background-position: center;
+}
+
+.title-img5{
+    background-image: url("./assets/titleImg5.png");
+    background-size: cover;
+    background-position: center;
+}

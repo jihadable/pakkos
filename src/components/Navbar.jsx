@@ -4,7 +4,7 @@ import account_image from "../assets/account_image.png"
 import search_icon from "../assets/search_icon.png"
 import { useState, useEffect, useRef } from "react"
 
-export default function Navbar(){
+export default function Navbar({ page }){
 
     const [showAccountMenu, setShowAccountMenu] = useState(false)
     const showAccountMenuBtn = useRef(null)
@@ -18,7 +18,7 @@ export default function Navbar(){
     }, [])
 
     return (
-        <nav className="fixed left-0 right-0 top-0 py-4 px-[5%] bg-white flex items-center justify-between text-[#222] shadow z-10">
+        <nav className={`fixed left-0 right-0 top-0 py-4 ${page === "title" ? "px-[10vw]" : "px-[5vw]"} bg-white flex items-center justify-between text-[#222] shadow z-10`}>
             <a href="/" className="logo flex">
                 <img src={logo} alt="Logo" />
             </a>

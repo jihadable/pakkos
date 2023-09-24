@@ -5,6 +5,7 @@ import img3 from "../assets/img3.png"
 import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react"
 import { IconHeart } from "@tabler/icons-react"
 import { useState } from "react"
+import { Link } from "react-router-dom"
 
 export default function Kos({ nama, rating, jarak, tanggal, bulan, harga }){
     
@@ -12,7 +13,7 @@ export default function Kos({ nama, rating, jarak, tanggal, bulan, harga }){
     const [isLove, setIsLove] = useState(false)
 
     return (
-        <div className={`kos flex flex-col gap-2 text-[#222] cursor-pointer group`}>
+        <Link to={"/room/title"} className={`kos flex flex-col gap-2 text-[#222] cursor-pointer group`}>
             <div className="top flex relative rounded-lg overflow-hidden">
                 <div className={`imgs flex w-fit transition duration-200 ${imgShow > 0 ? `img-show-${imgShow}` : ""}`}>
                     <img src={img1} alt="Image" />
@@ -43,6 +44,6 @@ export default function Kos({ nama, rating, jarak, tanggal, bulan, harga }){
                 <div className="tanggal-bulan">{tanggal[0]}-{tanggal[1]} {bulan}</div>
                 <div className="harga font-semibold mt-2">Rp{harga}/malam</div>
             </div>
-        </div>
+        </Link>
     )
 }
