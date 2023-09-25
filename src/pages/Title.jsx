@@ -30,50 +30,54 @@ export default function Title(){
 
 function Header(){
     return (
-        <header className="w-[80vw] mx-auto mt-32 flex flex-col gap-4 relative">
-            <div className="font-semibold text-2xl">Kost Eksklusif Kertajaya Surabaya 289651SM</div>
-            <div className="flex items-center justify-between text-sm">
-                <div className="left flex items-center gap-4">
-                    <div className="flex items-center gap-2">
-                        <IconUser stroke={1.5} />
-                        <span>Kos Putri</span>
+        <header className="w-[80vw] mx-auto mt-32 flex flex-col gap-4 mobile:w-[90vw] mobile:flex-col-reverse tablet:w-[90vw]">
+            <div className="info flex flex-col gap-4">
+                <div className="font-semibold text-2xl">Kost Eksklusif Kertajaya Surabaya 289651SM</div>
+                <div className="flex items-center justify-between text-sm mobile:flex-col mobile:items-start mobile:gap-4">
+                    <div className="left flex items-center gap-4">
+                        <div className="flex items-center gap-2">
+                            <IconUser stroke={1.5} />
+                            <span>Kos Putri</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                            <IconMapPin stroke={1.5} />
+                            <span>Kertajaya, Gubeng, Surabaya</span>
+                        </div>
                     </div>
-                    <div className="flex items-center gap-2">
-                        <IconMapPin stroke={1.5} />
-                        <span>Kertajaya, Gubeng, Surabaya</span>
+                    <div className="right flex items-center gap-4">
+                        <div className="flex items-center gap-2 cursor-pointer p-2 rounded-md hover:bg-black/[.05]">
+                            <IconShare2 stroke={1.5} />
+                            <span>Bagikan</span>
+                        </div>
+                        <div className="flex items-center gap-2 cursor-pointer p-2 rounded-md hover:bg-black/[.05]">
+                            <IconHeart stroke={1.5} />
+                            <span>Simpan</span>
+                        </div>
                     </div>
-                </div>
-                <div className="right flex items-center gap-4">
-                    <div className="flex items-center gap-2 cursor-pointer p-2 rounded-md hover:bg-black/[.05]">
-                        <IconShare2 stroke={1.5} />
-                        <span>Bagikan</span>
-                    </div>
-                    <div className="flex items-center gap-2 cursor-pointer p-2 rounded-md hover:bg-black/[.05]">
-                        <IconHeart stroke={1.5} />
-                        <span>Simpan</span>
-                    </div>
-                </div>
-            </div>
-            <div className="images flex items-stretch gap-2 rounded-xl h-[420px] overflow-hidden">
-                <div className="title-img1 w-full h-full"></div>
-                <div className=" w-full h-full grid grid-cols-2 gap-2">
-                    <div className="title-img2"></div>
-                    <div className="title-img3"></div>
-                    <div className="title-img4"></div>
-                    <div className="title-img5"></div>
                 </div>
             </div>
-            <button className="absolute bottom-4 right-4 flex items-center text-sm gap-2 py-1 px-4 border border-black rounded-lg bg-white">
-                <IconGridDots stroke={1.5} />
-                <span>Tampilkan semua foto</span>
-            </button>
+            <div className="images flex w-full mobile:overflow-x-auto relative">
+                <div className="images w-full flex items-stretch gap-2 h-[420px] rounded-xl overflow-hidden">
+                    <div className="title-img1 w-full h-full"></div>
+                    <div className="w-full h-full grid grid-cols-2 gap-2">
+                        <div className="title-img2"></div>
+                        <div className="title-img3"></div>
+                        <div className="title-img4"></div>
+                        <div className="title-img5"></div>
+                    </div>
+                </div>
+                <button className="absolute bottom-4 right-4 flex items-center text-sm gap-2 py-1 px-4 border border-black rounded-lg bg-white">
+                    <IconGridDots stroke={1.5} />
+                    <span>Tampilkan semua foto</span>
+                </button>
+            </div>
         </header>
     )
 }
 
 function Content(){
     return (
-        <div className="flex gap-4 w-[80vw] mx-auto mt-10 mb-24">
+        <div className="flex gap-4 w-[80vw] mx-auto mt-10 mb-24 mobile:w-[90vw] mobile:flex-col-reverse tablet:w-[90vw]">
             <Keuntungan />
             <Harga />
         </div>
@@ -82,7 +86,7 @@ function Content(){
 
 function Keuntungan(){
     return (
-        <section className="w-3/5 flex flex-col gap-8">
+        <section className="w-3/5 flex flex-col gap-8 mobile:w-full">
             <YangKamuDapatkan />
             <div className="line h-[1px] w-full bg-[#ddd]"></div>
             <SpesifikasiKamar />
@@ -194,7 +198,7 @@ function FasilitasKamar(){
     return (
         <div className="w-full flex flex-col gap-4">
             <div className="title text-xl font-semibold">Fasilitas Kamar</div>
-            <div className="items grid grid-cols-2 gap-4">
+            <div className="items grid grid-cols-2 gap-4 mobile:grid-cols-1 tablet:grid-cols-1">
             {
                 data.map((item, index) => {
                     return (
@@ -237,7 +241,7 @@ function FasilitasUmum(){
     return (
         <div className="w-full flex flex-col gap-4">
             <div className="title text-xl font-semibold">Fasilitas Umum</div>
-            <div className="items grid grid-cols-2 gap-4">
+            <div className="items grid grid-cols-2 gap-4 mobile:grid-cols-1 tablet:grid-cols-1">
             {
                 data.map((item, index) => {
                     return (
@@ -303,7 +307,7 @@ function Harga(){
 
     return (
         <>
-        <section className="w-2/5 h-fit flex flex-col gap-4 p-6 border rounded-xl bg-white shadow-xl">
+        <section className="w-2/5 h-fit flex flex-col gap-4 p-6 border rounded-xl bg-white shadow-xl mobile:w-full">
             <div className="">
                 <span className="font-semibold text-xl">Rp1.200.000</span> / bulan
             </div>
@@ -323,7 +327,7 @@ function TanyaPemilik({ showTanyaPemilik, setShowTanyaPemilik }){
     return (
         <>
         <div className={`overlay ${showTanyaPemilik ? "flex" : "hidden"} bg-black/[.5] fixed top-0 left-0 right-0 bottom-0 z-20`} onClick={() => setShowTanyaPemilik(false)}></div>
-        <div className={`${showTanyaPemilik ? "flex" : "hidden"} fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex-col gap-4 rounded-xl bg-white p-12 z-30`}>
+        <div className={`${showTanyaPemilik ? "flex" : "hidden"} fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex-col gap-4 rounded-xl bg-white p-12 z-30 mobile:w-[90vw] mobile:p-8`}>
             <div className="flex flex-col gap-4">
                 <div className="font-semibold text-xl">Pilih pertanyaan</div>
                 <div className="flex flex-col gap-4">

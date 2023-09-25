@@ -18,7 +18,7 @@ export default function Navbar({ page }){
     }, [])
 
     return (
-        <nav className={`fixed left-0 right-0 top-0 py-4 ${page === "title" ? "px-[10vw]" : "px-[5vw]"} bg-white flex items-center justify-between text-[#222] shadow z-10`}>
+        <nav className={`fixed left-0 right-0 top-0 py-4 ${page === "title" ? "px-[10vw] tablet:px-[5vw]" : "px-[5vw]"} bg-white flex items-center justify-between text-[#222] shadow z-10`}>
             <a href="/" className="logo flex mobile:hidden">
                 <img src={logo} alt="Logo" />
             </a>
