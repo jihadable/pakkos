@@ -23,11 +23,11 @@ export default function Footer(){
 
     return (
         <footer className="bg-[#F7F7F7] px-[5vw] pt-8 border-y border-[#ddd] w-full flex flex-col">
-            <div className="top flex justify-between pb-8 mobile:flex-col">
+            <div className="top flex justify-between pb-8 mobile:flex-col tablet:flex-col">
             {
                 linksData.map((item, index) => {
                     return (
-                        <div className={`item flex flex-col gap-4 text-sm mobile:py-4 ${index < 2 ? "mobile:border-b" : ""}`} key={index}>
+                        <div className={`item flex flex-col gap-4 text-sm mobile:py-4 tablet:py-4 ${index < 2 ? "mobile:border-b tablet:border-b" : ""}`} key={index}>
                             <div className="font-semibold">{item.title}</div>
                             <div className="links flex flex-col gap-4">
                             {
@@ -41,8 +41,12 @@ export default function Footer(){
                 })
             }
             </div>
-            <div className="bottom py-4 flex gap-2 border-t mobile:flex-col">
-                <span>© 2023 Airbnb, Inc.</span> • <a href="">Privasi</a> • <a href="">Ketentuan</a> • <a href="">Peta Situs</a> <span className="flex items-center gap-2">
+            <div className="bottom py-4 flex gap-2 border-t mobile:flex-col mobile:items-center mobile:gap-4 tablet:flex-col tablet:items-center tablet:gap-4">
+                <div>© 2023 Airbnb, Inc.</div> 
+                <div>
+                    <a href="">Privasi</a> • <a href="">Ketentuan</a> • <a href="">Peta Situs</a>
+                </div>
+                <div className="flex items-center gap-2">
                 {
                     sosmedData.map((item, index) => {
                         return (
@@ -52,7 +56,7 @@ export default function Footer(){
                         )
                     })
                 }
-                </span>
+                </div>
             </div>
         </footer>
     )

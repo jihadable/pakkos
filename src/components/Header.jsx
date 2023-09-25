@@ -51,27 +51,27 @@ export default function Header(){
     ]
 
     return (
-        <header className="mt-32 w-[90vw] mx-auto my-8 flex gap-4 text-xs font-semibold">
-            <div className="category-container flex">
+        <header className="mt-32 w-[90vw] mx-auto my-8 flex gap-4 text-xs font-semibold mobile:flex-col">
+            <div className="category-container flex overflow-x-auto mobile:border-b">
                 <div className="categories flex items-center gap-8">
                 {
                     categorieIcons.map((item, index) => {
                         return (
-                            <div className="category flex flex-col items-center gap-2 cursor-pointer pb-1 border-b border-transparent" key={index}>
+                            <div className={`category flex flex-col items-center gap-2 cursor-pointer pb-1 border-b-2 ${index === 0 ? "border-black" : "border-transparent"}`} key={index}>
                                 <img src={item.img} alt="Category" className="w-6 h-fit" />
-                                <div>{item.title}</div>
+                                <div className="whitespace-nowrap">{item.title}</div>
                             </div>
                         )
                     })
                 }
                 </div>
             </div>
-            <div className="filter flex items-center gap-2 p-4 rounded-xl cursor-pointer border">
+            <div className="filter flex items-center gap-2 p-4 rounded-xl cursor-pointer border mobile:hidden">
                 <IconAdjustmentsHorizontal stroke={1.5} width={16} height={16} />
                 <span>FIlter</span>
             </div>
-            <div className="flex items-center gap-2 p-4 rounded-xl cursor-pointer border">
-                <div>Tampilkan total sebelum pajak</div>
+            <div className="flex items-center gap-2 p-4 rounded-xl cursor-pointer border mobile:justify-between">
+                <div className="whitespace-nowrap">Tampilkan total sebelum pajak</div>
                 <div>
                     <label htmlFor="tampilkan_total_sebelum_pajak" className="flex rounded-full p-[2px] w-10 bg-[#ccc]">
                         <div className="circle w-5 h-5 bg-white rounded-full"></div>

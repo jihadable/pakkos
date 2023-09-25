@@ -16,6 +16,7 @@ import { IconHanger } from "@tabler/icons-react"
 import { IconCar } from "@tabler/icons-react"
 import { IconWindow } from "@tabler/icons-react"
 import { IconGridDots } from "@tabler/icons-react"
+import { useState } from "react"
 
 export default function Title(){
     return (
@@ -43,11 +44,11 @@ function Header(){
                     </div>
                 </div>
                 <div className="right flex items-center gap-4">
-                    <div className="flex items-center gap-2 cursor-pointer">
+                    <div className="flex items-center gap-2 cursor-pointer p-2 rounded-md hover:bg-black/[.05]">
                         <IconShare2 stroke={1.5} />
                         <span>Bagikan</span>
                     </div>
-                    <div className="flex items-center gap-2 cursor-pointer">
+                    <div className="flex items-center gap-2 cursor-pointer p-2 rounded-md hover:bg-black/[.05]">
                         <IconHeart stroke={1.5} />
                         <span>Simpan</span>
                     </div>
@@ -297,12 +298,64 @@ function PeraturanUmum(){
 }
 
 function Harga(){
+
+    const [showTanyaPemilik, setShowTanyaPemilik] = useState(false)
+
     return (
+        <>
         <section className="w-2/5 h-fit flex flex-col gap-4 p-6 border rounded-xl bg-white shadow-xl">
             <div className="">
                 <span className="font-semibold text-xl">Rp1.200.000</span> / bulan
             </div>
-            <button className="rounded-lg w-full flex items-center justify-center text-white py-2 font-semibold bg-primary">Tanya pemilik</button>
+            <button className="rounded-lg w-full flex items-center justify-center text-white py-2 font-semibold bg-primary" onClick={() => setShowTanyaPemilik(true)}>Tanya pemilik</button>
         </section>
+        <TanyaPemilik showTanyaPemilik={showTanyaPemilik} setShowTanyaPemilik={setShowTanyaPemilik}  />
+        </>
+    )
+}
+
+function TanyaPemilik({ showTanyaPemilik, setShowTanyaPemilik }){
+
+    const pertanyaanData = ["Saya butuh cepat, apa bisa booking sekarang?", "Apakah kamar masih tersedia?", "Alamat kos dimana?", "Cara menghubungi pemilik?", "Boleh tanya-tanya dulu?", "Bisa untuk pasutri?", "Apakah boleh bawa hewan?"]
+
+    const aktivitasData = ["Pekerja", "Mahasiswa/i"]
+
+    return (
+        <>
+        <div className={`overlay ${showTanyaPemilik ? "flex" : "hidden"} bg-black/[.5] fixed top-0 left-0 right-0 bottom-0 z-20`} onClick={() => setShowTanyaPemilik(false)}></div>
+        <div className={`${showTanyaPemilik ? "flex" : "hidden"} fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex-col gap-4 rounded-xl bg-white p-12 z-30`}>
+            <div className="flex flex-col gap-4">
+                <div className="font-semibold text-xl">Pilih pertanyaan</div>
+                <div className="flex flex-col gap-4">
+                {
+                    pertanyaanData.map((item, index) => {
+                        return (
+                            <label className="flex items-center gap-4 cursor-pointer" key={index}>
+                                <input type="radio" />
+                                <span>{item}</span>
+                            </label>
+                        )
+                    })
+                }
+                </div>
+            </div>
+            <div className="flex flex-col gap-4">
+                <div className="font-semibold text-xl">Aktivitas Kamu</div>
+                <div className="flex items-center gap-6">
+                {
+                    aktivitasData.map((item, index) => {
+                        return (
+                            <label className="flex items-center gap-4 cursor-pointer" key={index}>
+                                <input type="radio" />
+                                <span>{item}</span>
+                            </label>
+                        )
+                    })
+                }
+                </div>
+            </div>
+            <button className="bg-primary text-white rounded-lg flex justify-center w-full py-2 font-semibold">Kirim</button>
+        </div>
+        </>
     )
 }
