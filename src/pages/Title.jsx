@@ -57,16 +57,18 @@ function Header(){
                 </div>
             </div>
             <div className="images flex w-full mobile:overflow-x-auto relative">
-                <div className="images w-full flex items-stretch gap-2 h-[420px] rounded-xl overflow-hidden">
-                    <div className="title-img1 w-full h-full"></div>
-                    <div className="w-full h-full grid grid-cols-2 gap-2">
-                        <div className="title-img2"></div>
-                        <div className="title-img3"></div>
-                        <div className="title-img4"></div>
-                        <div className="title-img5"></div>
+                <div className="images-container w-full h-[420px] flex rounded-md overflow-hidden mobile:w-[90vw] mobile:h-[90vw] mobile:overflow-x-auto">
+                    <div className="images w-full h-full flex gap-2 mobile:w-fit">
+                        <div className="title-img1 w-full h-full mobile:w-[90vw] mobile:h-[90vw]"></div>
+                        <div className="grid grid-cols-2 gap-2 w-full h-full mobile:flex mobile:w-fit mobile:h-[90vw]">
+                            <div className="title-img2 mobile:w-[90vw] mobile:h-[90vw]"></div>
+                            <div className="title-img3 mobile:w-[90vw] mobile:h-[90vw]"></div>
+                            <div className="title-img4 mobile:w-[90vw] mobile:h-[90vw]"></div>
+                            <div className="title-img5 mobile:w-[90vw] mobile:h-[90vw]"></div>
+                        </div>
                     </div>
                 </div>
-                <button className="absolute bottom-4 right-4 flex items-center text-sm gap-2 py-1 px-4 border border-black rounded-lg bg-white">
+                <button className="absolute bottom-4 right-4 flex items-center text-sm gap-2 py-1 px-4 border border-black rounded-lg bg-white mobile:hidden">
                     <IconGridDots stroke={1.5} />
                     <span>Tampilkan semua foto</span>
                 </button>
@@ -307,7 +309,7 @@ function Harga(){
 
     return (
         <>
-        <section className="w-2/5 h-fit flex flex-col gap-4 p-6 border rounded-xl bg-white shadow-xl mobile:w-full">
+        <section className="w-2/5 h-fit flex flex-col gap-4 p-6 border rounded-xl bg-white shadow-xl sticky top-24 mobile:w-full mobile:static">
             <div className="">
                 <span className="font-semibold text-xl">Rp1.200.000</span> / bulan
             </div>

@@ -7,9 +7,9 @@ export default function Router(){
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<Home />}></Route>
-                <Route path="/room" element={<Room />}></Route>
-                <Route path="/room/title" element={<Title />}></Route>
+                <Route path="/" exact element={<Home />} />
+                <Route path="/room" element={<Room />} />
+                <Route path="/room/title" element={<Title />} />
             </Routes>
         </BrowserRouter>
     )
