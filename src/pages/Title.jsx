@@ -17,6 +17,9 @@ import { IconCar } from "@tabler/icons-react"
 import { IconWindow } from "@tabler/icons-react"
 import { IconGridDots } from "@tabler/icons-react"
 import { useState } from "react"
+import { IconChevronLeft } from "@tabler/icons-react"
+import { Link } from "react-router-dom"
+import goTop from "../components/goTop"
 
 export default function Title(){
     return (
@@ -30,8 +33,8 @@ export default function Title(){
 
 function Header(){
     return (
-        <header className="w-[80vw] mx-auto mt-32 flex flex-col gap-4 mobile:w-[90vw] mobile:flex-col-reverse tablet:w-[90vw]">
-            <div className="info flex flex-col gap-4">
+        <header className="w-[80vw] mx-auto mt-32 flex flex-col gap-4 mobile:w-full mobile:flex-col-reverse tablet:w-[90vw] mobile:mt-0">
+            <div className="info flex flex-col gap-4 mobile:px-[5vw]">
                 <div className="font-semibold text-2xl">Kost Eksklusif Kertajaya Surabaya 289651SM</div>
                 <div className="flex items-center justify-between text-sm mobile:flex-col mobile:items-start mobile:gap-4">
                     <div className="left flex items-center gap-4">
@@ -57,14 +60,27 @@ function Header(){
                 </div>
             </div>
             <div className="images flex w-full mobile:overflow-x-auto relative">
-                <div className="images-container w-full h-[420px] flex rounded-md overflow-hidden mobile:w-[90vw] mobile:h-[90vw] mobile:overflow-x-auto">
-                    <div className="images w-full h-full flex gap-2 mobile:w-fit">
-                        <div className="title-img1 w-full h-full mobile:w-[90vw] mobile:h-[90vw]"></div>
-                        <div className="grid grid-cols-2 gap-2 w-full h-full mobile:flex mobile:w-fit mobile:h-[90vw]">
-                            <div className="title-img2 mobile:w-[90vw] mobile:h-[90vw]"></div>
-                            <div className="title-img3 mobile:w-[90vw] mobile:h-[90vw]"></div>
-                            <div className="title-img4 mobile:w-[90vw] mobile:h-[90vw]"></div>
-                            <div className="title-img5 mobile:w-[90vw] mobile:h-[90vw]"></div>
+                <div className="images-container w-full h-[420px] flex rounded-md overflow-hidden mobile:w-full mobile:h-[100vw] mobile:overflow-x-auto mobile:rounded-none">
+                    <div className="images w-full h-full flex gap-2 mobile:w-fit mobile:gap-0">
+                        <div className="title-img1 w-full h-full mobile:w-[100vw] mobile:h-[100vw]"></div>
+                        <div className="grid grid-cols-2 gap-2 w-full h-full mobile:flex mobile:w-fit mobile:h-[100vw] mobile:gap-0">
+                            <div className="title-img2 mobile:w-[100vw] mobile:h-[100vw]"></div>
+                            <div className="title-img3 mobile:w-[100vw] mobile:h-[100vw]"></div>
+                            <div className="title-img4 mobile:w-[100vw] mobile:h-[100vw]"></div>
+                            <div className="title-img5 mobile:w-[100vw] mobile:h-[100vw]"></div>
+                        </div>
+                    </div>
+                </div>
+                <div className="btns hidden mobile:flex mobile:justify-between mobile:absolute mobile:top-0 mobile:left-0 mobile:right-0 mobile:p-4">
+                    <Link to={"/room"} onClick={goTop} className="back flex justify-center items-center rounded-full bg-white p-2">
+                        <IconChevronLeft width={20} height={20} />
+                    </Link>
+                    <div className="flex items-center gap-4">
+                        <div className="flex justify-center items-center rounded-full bg-white p-2">
+                            <IconShare2 width={20} height={20} />
+                        </div>
+                        <div className="flex justify-center items-center rounded-full bg-white p-2">
+                            <IconHeart width={20} height={20} />
                         </div>
                     </div>
                 </div>
@@ -79,7 +95,7 @@ function Header(){
 
 function Content(){
     return (
-        <div className="flex gap-4 w-[80vw] mx-auto mt-10 mb-24 mobile:w-[90vw] mobile:flex-col-reverse tablet:w-[90vw]">
+        <div className="flex gap-20 w-[80vw] mx-auto mt-10 mb-24 mobile:w-[90vw] mobile:flex-col-reverse tablet:w-[90vw]">
             <Keuntungan />
             <Harga />
         </div>
@@ -88,7 +104,7 @@ function Content(){
 
 function Keuntungan(){
     return (
-        <section className="w-3/5 flex flex-col gap-8 mobile:w-full">
+        <section className="w-[65%] flex flex-col gap-8 mobile:w-full">
             <YangKamuDapatkan />
             <div className="line h-[1px] w-full bg-[#ddd]"></div>
             <SpesifikasiKamar />
@@ -309,8 +325,8 @@ function Harga(){
 
     return (
         <>
-        <section className="w-2/5 h-fit flex flex-col gap-4 p-6 border rounded-xl bg-white shadow-xl sticky top-24 mobile:w-full mobile:static">
-            <div className="">
+        <section className="w-[35%] h-fit flex flex-col gap-4 p-6 border rounded-xl bg-white shadow-xl sticky top-24 mobile:w-full mobile:fixed mobile:bottom-0 mobile:top-auto mobile:left-0 mobile:right-0 mobile:flex-row mobile:rounded-none mobile:items-center mobile:border-t">
+            <div className="mobile:whitespace-nowrap">
                 <span className="font-semibold text-xl">Rp1.200.000</span> / bulan
             </div>
             <button className="rounded-lg w-full flex items-center justify-center text-white py-2 font-semibold bg-primary" onClick={() => setShowTanyaPemilik(true)}>Tanya pemilik</button>
@@ -326,6 +342,9 @@ function TanyaPemilik({ showTanyaPemilik, setShowTanyaPemilik }){
 
     const aktivitasData = ["Pekerja", "Mahasiswa/i"]
 
+    const [pertanyaanValue, setPertanyaanValue] = useState("")
+    const [aktivitasValue, setAktivitasValue] = useState("")
+
     return (
         <>
         <div className={`overlay ${showTanyaPemilik ? "flex" : "hidden"} bg-black/[.5] fixed top-0 left-0 right-0 bottom-0 z-20`} onClick={() => setShowTanyaPemilik(false)}></div>
@@ -336,10 +355,12 @@ function TanyaPemilik({ showTanyaPemilik, setShowTanyaPemilik }){
                 {
                     pertanyaanData.map((item, index) => {
                         return (
-                            <label className="flex items-center gap-4 cursor-pointer" key={index}>
-                                <input type="radio" />
+                            <div className="flex items-center gap-4 cursor-pointer" key={index} onClick={() => setPertanyaanValue(item)}>
+                                <div className="circle flex justify-center items-center p-[2px] rounded-full border border-primary">
+                                    <div className={`circle-point rounded-full w-4 h-4 ${pertanyaanValue === item ? "bg-primary" : ""}`}></div>
+                                </div>
                                 <span>{item}</span>
-                            </label>
+                            </div>
                         )
                     })
                 }
@@ -351,10 +372,12 @@ function TanyaPemilik({ showTanyaPemilik, setShowTanyaPemilik }){
                 {
                     aktivitasData.map((item, index) => {
                         return (
-                            <label className="flex items-center gap-4 cursor-pointer" key={index}>
-                                <input type="radio" />
+                            <div className="flex items-center gap-4 cursor-pointer" key={index} onClick={() => setAktivitasValue(item)}>
+                                <div className="circle flex justify-center items-center p-[2px] rounded-full border border-primary">
+                                    <div className={`circle-point rounded-full w-4 h-4 ${aktivitasValue === item ? "bg-primary" : ""}`}></div>
+                                </div>
                                 <span>{item}</span>
-                            </label>
+                            </div>
                         )
                     })
                 }
