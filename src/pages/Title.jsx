@@ -20,6 +20,9 @@ import { useState } from "react"
 import { IconChevronLeft } from "@tabler/icons-react"
 import { Link } from "react-router-dom"
 import goTop from "../components/goTop"
+import { Swiper, SwiperSlide } from 'swiper/react';
+// import "swiper/swiper.min.css";
+import 'swiper/css';
 
 export default function Title(){
     return (
@@ -32,6 +35,9 @@ export default function Title(){
 }
 
 function Header(){
+
+    const mobileDevice = window.matchMedia("screen and (max-width: 480px)").matches
+
     return (
         <header className="w-[80vw] mx-auto mt-32 flex flex-col gap-4 mobile:w-full mobile:flex-col-reverse tablet:w-[90vw] mobile:mt-0">
             <div className="info flex flex-col gap-4 mobile:px-[5vw]">
@@ -60,18 +66,36 @@ function Header(){
                 </div>
             </div>
             <div className="images flex w-full mobile:overflow-x-auto relative">
+            {
+                !mobileDevice &&
                 <div className="images-container w-full h-[420px] flex rounded-md overflow-hidden mobile:w-full mobile:h-[100vw] mobile:overflow-x-auto mobile:rounded-none">
-                    <div className="images w-full h-full flex gap-2 mobile:w-fit mobile:gap-0">
-                        <div className="title-img1 w-full h-full mobile:w-[100vw] mobile:h-[100vw]"></div>
-                        <div className="grid grid-cols-2 gap-2 w-full h-full mobile:flex mobile:w-fit mobile:h-[100vw] mobile:gap-0">
-                            <div className="title-img2 mobile:w-[100vw] mobile:h-[100vw]"></div>
-                            <div className="title-img3 mobile:w-[100vw] mobile:h-[100vw]"></div>
-                            <div className="title-img4 mobile:w-[100vw] mobile:h-[100vw]"></div>
-                            <div className="title-img5 mobile:w-[100vw] mobile:h-[100vw]"></div>
-                        </div>
+                    <div className="images w-full h-full grid grid-rows-2 grid-cols-4 gap-2 mobile:w-fit mobile:flex mobile:gap-0">
+                        <div className="title-img1 row-span-2 col-span-2 mobile:w-[100vw] mobile:h-[100vw]"></div>
+                        <div className="title-img2 mobile:w-[100vw] mobile:h-[100vw]"></div>
+                        <div className="title-img3 mobile:w-[100vw] mobile:h-[100vw]"></div>
+                        <div className="title-img4 mobile:w-[100vw] mobile:h-[100vw]"></div>
+                        <div className="title-img5 mobile:w-[100vw] mobile:h-[100vw]"></div>
                     </div>
                 </div>
-                <div className="btns hidden mobile:flex mobile:justify-between mobile:absolute mobile:top-0 mobile:left-0 mobile:right-0 mobile:p-4">
+            }
+            {
+                mobileDevice &&
+                <Swiper spaceBetween={0} slidesPerView={1} onSlideChange={() => console.log('slide change')} onSwiper={(swiper) => console.log(swiper)} >
+                    <SwiperSlide>
+                        <div className="title-img1 mobile:w-[100vw] mobile:h-[70vw]"></div>
+                    </SwiperSlide>
+                    <SwiperSlide>
+                        <div className="title-img2 mobile:w-[100vw] mobile:h-[70vw]"></div>
+                    </SwiperSlide>
+                    <SwiperSlide>
+                        <div className="title-img3 mobile:w-[100vw] mobile:h-[70vw]"></div>
+                    </SwiperSlide>
+                    <SwiperSlide>
+                        <div className="title-img4 mobile:w-[100vw] mobile:h-[70vw]"></div>
+                    </SwiperSlide>
+                </Swiper>
+            }
+                <div className="btns hidden mobile:flex mobile:justify-between mobile:absolute mobile:top-0 mobile:left-0 mobile:right-0 mobile:p-4 mobile:z-10">
                     <Link to={"/room"} onClick={goTop} className="back flex justify-center items-center rounded-full bg-white p-2">
                         <IconChevronLeft width={20} height={20} />
                     </Link>
