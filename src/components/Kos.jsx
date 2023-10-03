@@ -9,8 +9,8 @@ import { Link } from "react-router-dom"
 import goTop from "../components/goTop"
 import { useEffect } from "react"
 
-export default function Kos({ nama, rating, jarak, tanggal, bulan, harga }){
-    
+export default function Kos({ kos }){
+    // nama, rating, jarak, tanggal, bulan, harga
     const [imgShow, setImgSHow] = useState(0)
     const [isLove, setIsLove] = useState(false)
 
@@ -45,16 +45,33 @@ export default function Kos({ nama, rating, jarak, tanggal, bulan, harga }){
             </div>
             <div className="info flex flex-col">
                 <div className="top flex items-center justify-between">
-                    <div className="nama font-semibold text-ellipsis overflow-hidden whitespace-nowrap max-w-[85%]">{nama}</div>
+                    <div className="nama font-semibold text-ellipsis overflow-hidden whitespace-nowrap max-w-[85%]">{kos.nama}</div>
                     <div className="rating flex items-center">
                         <IconStar stroke={1.5} width={12} height={12} className="text-primary fill-primary" />
-                        <span>{rating}</span>    
+                        <span>{kos.rating}</span>    
                     </div>
                 </div>
-                <div className="jarak text-ellipsis overflow-hidden whitespace-nowrap text-[#717171]">Berjarak {jarak} kilometer</div>
-                <div className="tanggal-bulan">{tanggal[0]}-{tanggal[1]} {bulan}</div>
-                <div className="harga font-semibold mt-2">Rp{harga}/malam</div>
+                <div className="jarak text-ellipsis overflow-hidden whitespace-nowrap text-[#717171]">Berjarak {kos.jarak} kilometer</div>
+                <div className="tanggal-bulan">{kos.tanggal[0]}-{kos.tanggal[1]} {kos.bulan}</div>
+                <div className="harga font-semibold mt-2">Rp{kos.harga}/malam</div>
             </div>
         </Link>
+    )
+}
+
+export function KosSkeleton(){
+    return (
+        <div className="kos-skeleton flex flex-col gap-2">
+            <div className="img rounded-lg w-full pt-[95%] bg-[#ddd]"></div>
+            <div className="content flex flex-col gap-2">
+                <div className="name-rating w-full flex gap-2 items-center h-4">
+                    <div className="name w-[90%] h-full bg-[#ddd]"></div>
+                    <div className="rating w-[10%] h-full bg-[#ddd]"></div>
+                </div>
+                <div className="jarak w-1/2 h-4 bg-[#ddd]"></div>
+                <div className="tanggal w-[30%] h-4 bg-[#ddd]"></div>
+                <div className="harga w-1/2 h-4 bg-[#ddd]"></div>
+            </div>
+        </div>
     )
 }
