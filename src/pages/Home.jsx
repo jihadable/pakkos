@@ -13,7 +13,7 @@ export default function Home(){
         <Link to={"/room"} onClick={goTop} className="w-full flex justify-center my-12">
             <button className="rounded-lg bg-primary py-3 px-6 font-semibold text-white">Tampilkan lebih banyak</button>
         </Link>
-        <Penjelasan />
+        {/* <Penjelasan /> */}
         <Footer />
         </>
     )

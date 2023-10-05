@@ -8,6 +8,7 @@ import { useState } from "react"
 import { Link } from "react-router-dom"
 import goTop from "../components/goTop"
 import { useEffect } from "react"
+import { IconUser } from "@tabler/icons-react"
 
 export default function Kos({ kos }){
     // nama, rating, jarak, tanggal, bulan, harga
@@ -51,8 +52,18 @@ export default function Kos({ kos }){
                         <span>{kos.rating}</span>    
                     </div>
                 </div>
-                <div className="jarak text-ellipsis overflow-hidden whitespace-nowrap text-[#717171]">Berjarak {kos.jarak} kilometer</div>
-                <div className="tanggal-bulan">{kos.tanggal[0]}-{kos.tanggal[1]} {kos.bulan}</div>
+                <div className="flex items-center justify-between text-xs">
+                    <div className="flex items-center py-1 px-2 rounded-lg border">
+                        <IconUser stroke={1.5} width={16} height={16} />
+                        <span>Campur</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                        <div className="py-1 px-2 rounded-lg border">AC</div>
+                        <div className="py-1 px-2 rounded-lg border">Kamar Mandi Dalam</div>
+                    </div>
+                </div>
+                {/* <div className="jarak text-ellipsis overflow-hidden whitespace-nowrap text-[#717171]">Berjarak {kos.jarak} kilometer</div>
+                <div className="tanggal-bulan">{kos.tanggal[0]}-{kos.tanggal[1]} {kos.bulan}</div> */}
                 <div className="harga font-semibold mt-2">Rp{kos.harga}/malam</div>
             </div>
         </Link>

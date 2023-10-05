@@ -45,21 +45,21 @@ function Header(){
                 <div className="flex items-center justify-between text-sm mobile:flex-col mobile:items-start mobile:gap-4">
                     <div className="left flex items-center gap-4">
                         <div className="flex items-center gap-2">
-                            <IconUser stroke={1.5} />
+                            <IconUser stroke={1.5} className="text-primary" />
                             <span>Kos Putri</span>
                         </div>
                         <div className="flex items-center gap-2">
-                            <IconMapPin stroke={1.5} />
+                            <IconMapPin stroke={1.5} className="text-primary" />
                             <span>Kertajaya, Gubeng, Surabaya</span>
                         </div>
                     </div>
                     <div className="right flex items-center gap-4">
                         <div className="flex items-center gap-2 cursor-pointer p-2 rounded-md hover:bg-black/[.05]">
-                            <IconShare2 stroke={1.5} />
+                            <IconShare2 stroke={1.5} className="text-primary" />
                             <span>Bagikan</span>
                         </div>
                         <div className="flex items-center gap-2 cursor-pointer p-2 rounded-md hover:bg-black/[.05]">
-                            <IconHeart stroke={1.5} />
+                            <IconHeart stroke={1.5} className="text-primary" />
                             <span>Simpan</span>
                         </div>
                     </div>
